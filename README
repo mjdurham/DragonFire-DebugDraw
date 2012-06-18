@@ -1,0 +1,10 @@
+This project offers DebugDraw for Box2D using DragronFireSDK.
+
+Files required for DebugDraw:
+Render.h
+Render.cpp
+
+Example files using DebugDraw:
+App.cpp
+Bodies.h
+Bodies.cpp
