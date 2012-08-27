@@ -1,5 +1,8 @@
 This project offers DebugDraw for Box2D using DragronFireSDK.
 
+IF YOU ARE USING BOX2D VERSION 2.1.2 (most are):
+Add V212 to your preprocessor definitions otherwise this will not work.  If you are running the lastest version of Box2D you don't have to do anything.
+
 Files required for DebugDraw:
 Render.h
 Render.cpp

@@ -7,7 +7,12 @@
 
 
 b2Vec2 gravity(0.0f, 9.8f);
+
+#ifdef V212
+b2World* m_world = new b2World(gravity, true);
+#else
 b2World* m_world = new b2World(gravity);
+#endif
 
 int positionIterations = 6;
 int velocityIterations = 2;
@@ -51,7 +56,11 @@ void AppMain()
 
 	// setup DebugDraw
 	m_world->SetDebugDraw(&m_debugDraw);
-	m_debugDraw.SetFlags(b2Draw::e_shapeBit + b2Draw::e_jointBit);
+#ifdef V212
+	m_debugDraw.SetFlags(b2DebugDraw::e_shapeBit + b2DebugDraw::e_jointBit + b2DebugDraw::e_centerOfMassBit);
+#else
+	m_debugDraw.SetFlags(b2Draw::e_shapeBit + b2Draw::e_jointBit + b2Draw::e_centerOfMassBit);
+#endif
 
 	// create ground floor
 	b2BodyDef groundBodyDef;

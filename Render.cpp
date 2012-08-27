@@ -49,6 +49,23 @@ void DebugDraw::DrawSegment(const b2Vec2& p1, const b2Vec2& p2, const b2Color& c
 
 void DebugDraw::DrawTransform(const b2Transform& xf)
 {
+
+#ifdef V212
+
+	b2Vec2 p1 = xf.position, p2;
+	const float32 k_axisScale = 0.4f;
+
+	p2 = p1 + k_axisScale * xf.R.col1;
+	DrawSetColor(draw_handle, 0xFF0000);
+	DrawLine(draw_handle, Round(p1.x*pixels_per_meter), Round(p1.y*pixels_per_meter), Round(p2.x*pixels_per_meter), Round(p2.y*pixels_per_meter));
+
+	p2 = p1 + k_axisScale * xf.R.col2;
+	DrawSetColor(draw_handle,0x00FF00);
+	DrawLine(draw_handle, Round(p1.x*pixels_per_meter), Round(p1.y*pixels_per_meter), Round(p2.x*pixels_per_meter), Round(p2.y*pixels_per_meter));
+
+
+#else
+
 	b2Vec2 p1 = xf.p, p2;
 	const float32 k_axisScale = 0.4f;
 	
@@ -59,6 +76,8 @@ void DebugDraw::DrawTransform(const b2Transform& xf)
 	p2 = p1 + k_axisScale * xf.q.GetYAxis();
 	DrawSetColor(draw_handle,0x00FF00);
 	DrawLine(draw_handle, Round(p1.x*pixels_per_meter), Round(p1.y*pixels_per_meter), Round(p2.x*pixels_per_meter), Round(p2.y*pixels_per_meter));
+
+#endif
 }
 
 void DebugDraw::DrawPoint(const b2Vec2& p, float32 size, const b2Color& color)

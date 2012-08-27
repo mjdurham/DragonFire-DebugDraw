@@ -3,7 +3,11 @@
 
 #include <Box2D/Box2D.h>
 
+#ifdef V212
+class DebugDraw : public b2DebugDraw
+#else
 class DebugDraw : public b2Draw
+#endif
 {
 public:
 
